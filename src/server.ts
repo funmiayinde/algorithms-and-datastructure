@@ -1,19 +1,13 @@
 import * as express from 'express';
-import { WelcomeController } from './controllers';
-import isAdditiveNumber from './execise/additive-number';
+import maxProfit_1 from './execise/best-time-buy-sell-iii';
 
-// Create a new express application instance
+
 const app: express.Application = express.default();
-
-// The port the express app will listen on
 const port = process.env.PORT || 3000;
 
-// Mount the WelcomeController at the /welcome route
-app.use('/welcome', WelcomeController);
 
-// Serve the application at the given port
 app.listen(port, () => {
-    // Success callback
-    console.log('result:',isAdditiveNumber('112358'));
+    console.log('maxProfit-1:', maxProfit_1([3,3,5,0,0,3,1,4]));
     console.log(`Listening at http://localhost:${port}/`);
+    
 });
