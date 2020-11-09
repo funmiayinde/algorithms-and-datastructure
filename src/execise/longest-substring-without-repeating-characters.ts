@@ -18,7 +18,7 @@
  * @param {string} s
  * @return {number}
  */
-const lengthOfLongestSubstring = (s: string) => {
+const lengthOfLongestSubstring = (s: string): number => {
     const set: Set<any> = new Set();
     let max: number = 0;
 
@@ -33,4 +33,36 @@ const lengthOfLongestSubstring = (s: string) => {
     return max;
 };
 
-export default lengthOfLongestSubstring;
+// export default lengthOfLongestSubstring;
+
+/***
+ * Given two strings a and b, return the length of the longest common subsequence of the two strings.
+ * A subsequence of a string is defined as deleting some or no characters of the original string 
+ * without changing the order of the remaining characters.
+ * 
+ * Example 1
+ * Input
+ * a = "abcvc"
+ * b = "bv"
+ * Output: 2
+ */
+const lengthOfLongestSubstring2 = (a: string, b: string)  =>{
+    let sets: Set<any> = new Set();
+    let max = 0;
+    for (let i = 0, j = 0; j < a.length; j++) {
+        while(sets.has(a[j])) {
+            sets.delete(a[j]);
+            i++;
+        }
+        sets.add(a[j]);
+    }
+    console.log('sets:', sets);
+    for (let i = 0; i < b.length; i++) {
+        if (sets.has(b[i])){
+            max++;
+        }
+    }
+   return max;
+}
+
+export default lengthOfLongestSubstring2;
